@@ -1,0 +1,81 @@
+.teste {
+  background-color: lightseagreen;
+  opacity: 0.85;
+  border-radius: border-box;
+  padding: 5px;
+}
+
+.testeDead {
+  background-color: gray;
+  opacity: 0.85;
+  border-radius: border-box;
+  padding: 5px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/85/Dead.png");
+  background-position: center;
+  background-size: contain;
+  background-blend-mode: multiply;
+  color: whitesmoke;
+}
+
+.teste2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.teste h1 {
+  font-size: 3rem;
+}
+
+.testeDead h1 {
+  font-size: 3rem;
+}
+
+.invincibleCheckbox {
+  z-index: 1;
+  font-size: 1em;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  margin: 9.5em 0.2em;
+}
+
+button {
+  font-size: 2rem;
+  min-width: 2.5rem;
+  border-radius: 20px;
+  border: solid 1px black;
+  cursor: pointer;
+  padding: 0rem 0.5rem;
+  margin: 10px;
+}
+
+.lifeCounterArea {
+  border: black 2px solid;
+  box-shadow: 2px 5px 5px black;
+  margin: 15px;
+}
+
+.playerName {
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+.botaoContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.botaoFechar {
+  z-index: 2;
+  border: solid black 1px;
+  padding: 0 6px;
+  max-width: 1.5em;
+  font-size: 1em;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
