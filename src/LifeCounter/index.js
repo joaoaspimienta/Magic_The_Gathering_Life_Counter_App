@@ -47,7 +47,10 @@ export default function LifeCounter() {
 
         <div className={!invincible && lifePoints < 1 ? "testeDead" : "teste"}>
           <div className="teste2">
-            <div onClick={() => setPlayerName(prompt)} className="playerName">
+            <div
+              onClick={() => setPlayerName(prompt("Please tell me your name"))}
+              className="playerName"
+            >
               {playerName}
             </div>
           </div>

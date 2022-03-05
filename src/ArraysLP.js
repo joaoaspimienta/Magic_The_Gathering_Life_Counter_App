@@ -1,23 +1,22 @@
 import LifeCounter from "./LifeCounter";
-import { useState } from "react";
+import { /* useEffect, */ useState } from "react";
 import Coin from "./Coin/Coin";
 import Die from "./Die/Die";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { v4 as generateId } from "uuid";
 
 import "./styles.css";
 
 export default function ArraysLP() {
-  const [listaComponentes, setListaComponentes] = useState([<LifeCounter />]);
-
-  const arrayCounter = [<LifeCounter />];
+  const [listaPlayers, setListaPlayers] = useState(["1"]);
 
   return (
     <div className="rootContainer">
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -32,17 +31,14 @@ export default function ArraysLP() {
         <div className="botoes">
           <button
             onClick={() => {
-              setListaComponentes([...listaComponentes, ...arrayCounter]);
-              console.log(listaComponentes.length);
+              setListaPlayers((listaPlayers) => [...listaPlayers, 1]);
+              console.log(listaPlayers.length);
             }}
             className="addPlayers"
           >
             Add players
           </button>
-          <button
-            onClick={() => setListaComponentes([])}
-            className="addPlayers"
-          >
+          <button onClick={() => setListaPlayers([])} className="addPlayers">
             Delete all players
           </button>
         </div>
@@ -51,7 +47,11 @@ export default function ArraysLP() {
           <Die />
         </div>
       </div>
-      <div className="colunas">{listaComponentes}</div>
+      <div className="colunas">
+        {listaPlayers.map(() => (
+          <LifeCounter key={generateId()} />
+        ))}
+      </div>
     </div>
   );
 }
