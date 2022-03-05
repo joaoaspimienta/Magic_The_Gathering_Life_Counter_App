@@ -1,0 +1,12 @@
+.die {
+  max-width: 80px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  border: solid 3px black;
+  box-shadow: 2px 5px 5px black;
+  background-color: lightseagreen;
+
+  background-color: rgba(255, 100, 0, 0.705);
+  box-shadow: 2px 1px 5px white;
+}

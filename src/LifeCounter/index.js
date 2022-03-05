@@ -1,5 +1,7 @@
-import "./styles.css";
+import "./lifeCounter.css";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LifeCounter() {
   const [lifePoints, setLifePoints] = useState(20);
@@ -12,7 +14,9 @@ export default function LifeCounter() {
 
   useEffect(() => {
     if (!invincible && lifePoints < 1) {
-      alert(playerName + " lost!");
+      playerName === "Player name"
+        ? toast(`☠️ Guy who doesn't know how to write his own name is dead!`)
+        : toast(`☠️ ${playerName} is dead!`);
     }
   }, [invincible, lifePoints, playerName]);
 
@@ -20,6 +24,11 @@ export default function LifeCounter() {
 
   return (
     <>
+      {/* 
+      <div>
+        {" "}
+        <button onClick={notify}>Notify !</button>
+      </div> */}
       <div className="lifeCounterArea">
         <div className="checkboxContainer">
           <div className="invincibleCheckbox">
@@ -43,11 +52,17 @@ export default function LifeCounter() {
             </div>
           </div>
 
-          <div className="teste2">
-            <button onClick={reduceLifePoints}>-</button>
+          <div className="teste4">
+            <div className="reduce">
+              <button onClick={() => setLifePoints(lifePoints - 5)}>-5</button>
+              <button onClick={reduceLifePoints}>-1</button>
+            </div>
             <h1>{lifePoints}</h1>
-            <button onClick={() => setLifePoints(lifePoints + 1)}>+</button>
-            <br />
+            <div className="increase">
+              <button onClick={() => setLifePoints(lifePoints + 1)}>+1</button>
+              <button onClick={() => setLifePoints(lifePoints + 5)}>+5</button>
+              <br />
+            </div>
           </div>
 
           <div className="teste2">

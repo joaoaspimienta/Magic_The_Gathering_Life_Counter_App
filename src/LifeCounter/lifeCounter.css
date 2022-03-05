@@ -38,10 +38,10 @@
   display: flex;
   position: absolute;
   align-items: center;
-  margin: 9.5em 0.2em;
+  margin: 11.2em 0.3em;
 }
 
-button {
+.lifeCounterArea button {
   font-size: 2rem;
   min-width: 2.5rem;
   border-radius: 20px;
@@ -60,6 +60,11 @@ button {
 .playerName {
   cursor: pointer;
   font-size: 2.5rem;
+  transition: 2s;
+}
+
+.playerName:hover {
+  color: white;
 }
 
 .botaoContainer {
@@ -78,4 +83,33 @@ button {
   display: flex;
   justify-content: center;
   position: absolute;
+}
+
+.teste4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.teste4 button {
+  margin: 3px;
+  font-size: 1.5em;
+  padding: 10px;
+  border-radius: 40%;
+}
+
+.teste4 h1 {
+  margin: 10px;
+  font-size: 3.5em;
+}
+
+.increase button:hover {
+  color: green;
+  transition: 0.5s;
+}
+
+.reduce button:hover {
+  color: red;
+  transition: 0.5s;
 }
