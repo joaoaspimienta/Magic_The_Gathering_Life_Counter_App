@@ -31,7 +31,11 @@ export default function ArraysLP() {
         <div className="botoes">
           <button
             onClick={() => {
-              setListaPlayers((listaPlayers) => [...listaPlayers, 1]);
+              setListaPlayers((listaPlayers) => [
+                ...listaPlayers,
+                generateId()
+              ]);
+
               console.log(listaPlayers.length);
             }}
             className="addPlayers"
@@ -49,7 +53,7 @@ export default function ArraysLP() {
       </div>
       <div className="colunas">
         {listaPlayers.map(() => (
-          <LifeCounter key={generateId()} />
+          <LifeCounter />
         ))}
       </div>
     </div>
