@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function LifeCounter() {
+export default function LifeCounter(props) {
   const [lifePoints, setLifePoints] = useState(20);
   const [playerName, setPlayerName] = useState("Player name");
   const [invincible, setInvincible] = useState(false);
@@ -42,7 +42,17 @@ export default function LifeCounter() {
         </div>
 
         <div className="botaoContainer">
-          <h1 className="botaoFechar">X</h1>
+          <h1
+            className="botaoFechar"
+            onClick={() => {
+              console.log(props.id);
+              props.setListaPlayers((prev) =>
+                prev.filter((i) => i !== props.id)
+              );
+            }}
+          >
+            X
+          </h1>
         </div>
 
         <div className={!invincible && lifePoints < 1 ? "testeDead" : "teste"}>

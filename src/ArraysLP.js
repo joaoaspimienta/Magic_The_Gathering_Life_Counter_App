@@ -10,7 +10,7 @@ import { v4 as generateId } from "uuid";
 import "./styles.css";
 
 export default function ArraysLP() {
-  const [listaPlayers, setListaPlayers] = useState(["1"]);
+  const [listaPlayers, setListaPlayers] = useState([generateId()]);
 
   return (
     <div className="rootContainer">
@@ -31,10 +31,7 @@ export default function ArraysLP() {
         <div className="botoes">
           <button
             onClick={() => {
-              setListaPlayers((listaPlayers) => [
-                ...listaPlayers,
-                generateId()
-              ]);
+              setListaPlayers((prev) => [...prev, generateId()]);
 
               console.log(listaPlayers.length);
             }}
@@ -52,8 +49,8 @@ export default function ArraysLP() {
         </div>
       </div>
       <div className="colunas">
-        {listaPlayers.map(() => (
-          <LifeCounter />
+        {listaPlayers.map((id) => (
+          <LifeCounter key={id} id={id} setListaPlayers={setListaPlayers} />
         ))}
       </div>
     </div>
