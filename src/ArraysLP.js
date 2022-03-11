@@ -1,5 +1,5 @@
 import LifeCounter from "./LifeCounter";
-import { /* useEffect, */ useState } from "react";
+import { useEffect, useState } from "react";
 import Coin from "./Coin/Coin";
 import Die from "./Die/Die";
 
@@ -12,6 +12,10 @@ import "./styles.css";
 export default function ArraysLP() {
   const [listaPlayers, setListaPlayers] = useState([generateId()]);
 
+  useEffect(() => {
+    console.log(listaPlayers.length);
+  }, [listaPlayers]);
+
   return (
     <div className="rootContainer">
       <ToastContainer
@@ -21,7 +25,7 @@ export default function ArraysLP() {
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss={true}
+        pauseOnFocusLoss
         draggable
         pauseOnHover={false}
         ToastContainer
@@ -32,8 +36,6 @@ export default function ArraysLP() {
           <button
             onClick={() => {
               setListaPlayers((prev) => [...prev, generateId()]);
-
-              console.log(listaPlayers.length);
             }}
             className="addPlayers"
           >

@@ -1,13 +1,14 @@
 .coin {
   cursor: pointer;
-  margin-right: 10px;
   max-width: 80px;
-  border-radius: 50%;
-  border: solid 3px black;
-  box-shadow: 2px 5px 5px black;
   padding: 5px;
-  background-color: lightseagreen;
+}
 
-  background-color: rgba(255, 100, 0, 0.705);
+.coinBG {
+  border-radius: 50%;
   box-shadow: 2px 1px 5px white;
+  background-color: lightseagreen;
+  background-color: rgba(255, 100, 0, 0.705);
+  border: solid 3px black;
+  margin-right: 10px;
 }
