@@ -7,20 +7,19 @@ export default function LifeCounter(props) {
   const [lifePoints, setLifePoints] = useState(20);
   const [playerName, setPlayerName] = useState("Player name");
   const [invincible, setInvincible] = useState(false);
-
-  function reduceLifePoints() {
-    setLifePoints(lifePoints - 1);
-  }
+  const [isAlive, setIsAlive] = useState(true);
 
   useEffect(() => {
-    if (!invincible && lifePoints < 1) {
+    if (!invincible && isAlive === false) {
       playerName === "Player name"
         ? toast(`☠️ Guy who doesn't know how to write his own name is dead!`)
         : toast(`☠️ ${playerName} is dead!`);
     }
-  }, [invincible, lifePoints, playerName]);
+  }, [invincible, isAlive, playerName]);
 
-  //lifePoints === 1 && alert(playerName + " lost!");
+  useEffect(() => {
+    lifePoints <= 0 && setIsAlive(false);
+  }, [lifePoints]);
 
   return (
     <>
@@ -70,7 +69,7 @@ export default function LifeCounter(props) {
           <div className="teste4">
             <div className="reduce">
               <button onClick={() => setLifePoints(lifePoints - 5)}>-5</button>
-              <button onClick={reduceLifePoints}>-1</button>
+              <button onClick={() => setLifePoints(lifePoints - 1)}>-1</button>
             </div>
             <h1>{lifePoints}</h1>
             <div className="increase">
