@@ -8,6 +8,7 @@ export default function LifeCounter(props) {
   const [playerName, setPlayerName] = useState("Player name");
   const [invincible, setInvincible] = useState(false);
   const [isAlive, setIsAlive] = useState(true);
+  const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     if (!invincible && isAlive === false) {
@@ -18,8 +19,13 @@ export default function LifeCounter(props) {
   }, [invincible, isAlive, playerName]);
 
   useEffect(() => {
-    lifePoints <= 0 && setIsAlive(false);
-  }, [lifePoints]);
+    if (!invincible && lifePoints <= 0) {
+      setIsAlive(false);
+      setDisable(true);
+    } else {
+      console.log("a");
+    }
+  }, [lifePoints, invincible]);
 
   return (
     <>
@@ -34,6 +40,7 @@ export default function LifeCounter(props) {
             <input
               type="checkbox"
               id="invCheckbox"
+              disabled={disable}
               onClick={() => setInvincible(!invincible)}
             />
             <span>Invincible</span>
@@ -54,7 +61,9 @@ export default function LifeCounter(props) {
           </h1>
         </div>
 
-        <div className={!invincible && lifePoints < 1 ? "testeDead" : "teste"}>
+        <div
+          className={!invincible && isAlive === false ? "testeDead" : "teste"}
+        >
           <div className="teste2">
             <div
               onClick={(playerName) =>
@@ -73,14 +82,32 @@ export default function LifeCounter(props) {
             </div>
             <h1>{lifePoints}</h1>
             <div className="increase">
-              <button onClick={() => setLifePoints(lifePoints + 1)}>+1</button>
-              <button onClick={() => setLifePoints(lifePoints + 5)}>+5</button>
+              <button
+                disabled={disable}
+                onClick={() => setLifePoints(lifePoints + 1)}
+              >
+                +1
+              </button>
+              <button
+                disabled={disable}
+                onClick={() => setLifePoints(lifePoints + 5)}
+              >
+                +5
+              </button>
               <br />
             </div>
           </div>
 
           <div className="teste2">
-            <button onClick={() => setLifePoints(20)}>Reset</button>
+            <button
+              onClick={() => {
+                setLifePoints(20);
+                setIsAlive(true);
+                setDisable(false);
+              }}
+            >
+              Reset
+            </button>
           </div>
         </div>
       </div>
